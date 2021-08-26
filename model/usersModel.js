@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const userDataSchema = new mongoose.Schema({
   userName: {
-    type: "string",
+    type: String,
     trim: true,
     require: [true, "You need to enter a username"],
   },
   userPass: {
-    type: "string",
+    type: String,
     trim: true,
     require: [true, "You need to enter a password"],
   },
