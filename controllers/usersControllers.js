@@ -1,8 +1,18 @@
 const UserData = require("../model/usersModel");
 const express = require("express");
 
+// View All Users
+const getAllUsers = async (req, res) => {
+  try {
+    const user = await UserData.find();
+    res.status(200).json();
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // Add new user
-const addUser = async (req, res) => {
+const addNewUser = async (req, res) => {
   const user = new UserData({
     userName: req.body.userName,
     userPass: req.body.userPass,
@@ -11,6 +21,12 @@ const addUser = async (req, res) => {
     toolStack: req.body.toolStack,
     email: req.body.email,
   });
+  try {
+    const newUser = await user.save();
+    res.status(201).json(newUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 };
 
 /*{
