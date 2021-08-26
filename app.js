@@ -18,7 +18,7 @@ mongoose
 
 // http://localhost:5000/users
 const users = require("./router/users");
-app.use("/users", users);
+// app.use("/users", users);
 
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to Express mongoDB App");
