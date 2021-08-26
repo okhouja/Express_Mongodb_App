@@ -11,12 +11,12 @@ const userDataSchema = new mongoose.Schema({
     require: [true, "You need to enter a password"],
   },
   age: {
-    type: Integer,
+    type: Number,
     trim: true,
     require: [true, "You need to enter your age as Interger"],
   },
   fbw: {
-    type: Integer,
+    type: Number,
     trim: true,
     require: [true, "You need to enter your Class Nubmer"],
   },
