@@ -1,7 +1,6 @@
 const UsersData = require("../model/usersModel");
 const express = require("express");
 
-// Middleware
 // View All Users
 const getAllUsers = async (req, res) => {
   try {
@@ -15,7 +14,7 @@ const getAllUsers = async (req, res) => {
 
 // Add new user
 const addNewUser = async (req, res) => {
-  const user = new UserData({
+  const user = new UsersData({
     userName: req.body.userName,
     userPass: req.body.userPass,
     age: req.body.age,
@@ -25,12 +24,15 @@ const addNewUser = async (req, res) => {
   });
   try {
     const newUser = await user.save();
+    // 201 for successful Created
     res.status(201).json(newUser);
   } catch (err) {
+    // 400 for unauthorized or bad request
     res.status(400).json({ message: err.message });
   }
 };
 
+module.exports = { addNewUser, getAllUsers };
 /*{
     "userName": "steel",
     "userPass": "123pass",
