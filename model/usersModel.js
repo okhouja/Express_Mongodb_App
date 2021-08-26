@@ -13,7 +13,7 @@ const userDataSchema = new mongoose.Schema({
   age: {
     type: Number,
     trim: true,
-    require: [true, "You need to enter your age as Interger"],
+    require: [true, "You need to enter your age as Number"],
   },
   fbw: {
     type: Number,

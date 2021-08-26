@@ -1,11 +1,13 @@
-const UserData = require("../model/usersModel");
+const UsersData = require("../model/usersModel");
 const express = require("express");
 
+// Middleware
 // View All Users
 const getAllUsers = async (req, res) => {
   try {
-    const user = await UserData.find();
-    res.status(200).json();
+    const users = await UsersData.find();
+    console.log(users);
+    res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
