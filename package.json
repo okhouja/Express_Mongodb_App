@@ -1,0 +1,29 @@
+{
+  "name": "express_assignment",
+  "version": "1.0.0",
+  "description": "Rest API example to practice",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okhouja/Express_Mongodb_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okhouja/Express_Mongodb_App/issues"
+  },
+  "homepage": "https://github.com/okhouja/Express_Mongodb_App#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
