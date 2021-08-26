@@ -5,8 +5,23 @@ const express = require("express");
 const getAllUsers = async (req, res) => {
   try {
     const users = await UsersData.find();
-    console.log(users);
-    res.status(200).json(users);
+    // console.log(users);
+    res.status(200).json(
+      users.map((user) => {
+        return {
+          UserName: req.body.userName,
+          userPassword: req.body.password,
+          Age: req.body.age,
+          fbw: req.body.fbw,
+          toolStack: req.body.toolStack,
+          email: req.body.email,
+          request: {
+            type: "GET",
+            url: `http://localhost:5000/users/${user.userName}`,
+          },
+        };
+      })
+    );
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -24,6 +39,7 @@ const addNewUser = async (req, res) => {
   });
   try {
     const newUser = await user.save();
+    console.log(newUser);
     // 201 for successful Created
     res.status(201).json(newUser);
   } catch (err) {

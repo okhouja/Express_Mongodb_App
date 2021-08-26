@@ -3,22 +3,22 @@ const userDataSchema = new mongoose.Schema({
   userName: {
     type: String,
     trim: true,
-    require: [true, "You need to enter a username"],
+    required: [true, "You need to enter a username"],
   },
   userPass: {
     type: String,
     trim: true,
-    require: [true, "You need to enter a password"],
+    required: [true, "You need to enter a password"],
   },
   age: {
     type: Number,
     trim: true,
-    require: [true, "You need to enter your age as Number"],
+    required: [true, "You need to enter your age as Number"],
   },
   fbw: {
     type: Number,
     trim: true,
-    require: [true, "You need to enter your Class Nubmer"],
+    required: [true, "You need to enter your Class Nubmer"],
   },
   toolStack: {
     type: Array,
@@ -27,11 +27,11 @@ const userDataSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    require: [true, "Please, Enter your Email Address"],
+    required: [true, "Please, Enter your Email Address"],
   },
   userAddedDate: {
     type: Date,
-    require: true,
+    required: true,
     default: Date.now,
   },
 });
