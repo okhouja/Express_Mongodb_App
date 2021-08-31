@@ -1,6 +1,21 @@
 const UsersData = require("../model/usersModel");
 const express = require("express");
 
+// View one user
+const getUser = async (req, res, next) => {
+  try {
+    const user = await UsersData.findOne({ userName: req.params.userName });
+    console.log(user);
+    if (user == null) {
+      return res.status(404).json({ message: "Sorry, User not found." });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+  res.user = user;
+  next();
+};
+
 // View All Users
 const getAllUsers = async (req, res) => {
   try {
@@ -73,7 +88,7 @@ const updateAllUserData = async (req, res) => {
 
 // Patch one User
 
-module.exports = { addNewUser, getAllUsers, updateAllUserData };
+module.exports = { getUser, addNewUser, getAllUsers, updateAllUserData };
 
 /*{
     "userName": "steel",
