@@ -49,10 +49,10 @@ const addNewUser = async (req, res) => {
 };
 
 // Update one User
-const updateUser = async (req, res) => {
+const updateAllUserData = async (req, res) => {
   try {
     await UsersData.updateOne(
-      { userName: req.params.name },
+      { userName: req.params.userName },
       {
         $set: {
           userName: req.body.userName,
@@ -65,7 +65,7 @@ const updateUser = async (req, res) => {
         $currentDate: { userAddedDate: Date.now },
       }
     );
-    req.status(200).json({ message: "User Updated Successfully" });
+    req.status(200).json({ message: "user updated Successfully" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -73,7 +73,8 @@ const updateUser = async (req, res) => {
 
 // Patch one User
 
-module.exports = { addNewUser, getAllUsers };
+module.exports = { addNewUser, getAllUsers, updateAllUserData };
+
 /*{
     "userName": "steel",
     "userPass": "123pass",
