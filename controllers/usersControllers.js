@@ -1,10 +1,11 @@
 const UsersData = require("../model/usersModel");
 const express = require("express");
 
-// View one user
+// Get one user by his userName
 const getUser = async (req, res, next) => {
+  let user;
   try {
-    const user = await UsersData.findOne({ userName: req.params.userName });
+    user = await UsersData.findOne({ userName: req.params.userName });
     console.log(user);
     if (user == null) {
       return res.status(404).json({ message: "Sorry, User not found." });
@@ -16,6 +17,11 @@ const getUser = async (req, res, next) => {
   next();
 };
 
+// Get one user
+const getOneUser = async (req, res) => {
+  res.status(200).json(res.user);
+};
+
 // View All Users
 const getAllUsers = async (req, res) => {
   try {
@@ -24,16 +30,17 @@ const getAllUsers = async (req, res) => {
     res.status(200).json(
       users.map((user) => {
         return {
-          UserName: req.body.userName,
-          userPassword: req.body.password,
-          Age: req.body.age,
-          fbw: req.body.fbw,
-          toolStack: req.body.toolStack,
-          email: req.body.email,
-          request: {
-            type: "GET",
-            url: `http://localhost:5000/users/${user.userName}`,
-          },
+          UserName: user.userName,
+          userPassword: user.password,
+          Age: user.age,
+          fbw: user.fbw,
+          toolStack: user.toolStack,
+          email: user.email,
+          // request: {
+          //   UserName: `${user.userName}`,
+          //   type: "GET",
+          //   url: `http://localhost:5000/users/${user.userName}`,
+          // },
         };
       })
     );
@@ -88,7 +95,13 @@ const updateAllUserData = async (req, res) => {
 
 // Patch one User
 
-module.exports = { getUser, addNewUser, getAllUsers, updateAllUserData };
+module.exports = {
+  getUser,
+  getOneUser,
+  addNewUser,
+  getAllUsers,
+  updateAllUserData,
+};
 
 /*{
     "userName": "steel",
