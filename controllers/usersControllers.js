@@ -48,6 +48,31 @@ const addNewUser = async (req, res) => {
   }
 };
 
+// Update one User
+const updateUser = async (req, res) => {
+  try {
+    await UsersData.updateOne(
+      { userName: req.params.name },
+      {
+        $set: {
+          userName: req.body.userName,
+          userPass: req.body.userPass,
+          age: req.body.age,
+          fbw: req.body.fbw,
+          toolStack: req.body.toolStack,
+          email: req.body.email,
+        },
+        $currentDate: { userAddedDate: Date.now },
+      }
+    );
+    req.status(200).json({ message: "User Updated Successfully" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+// Patch one User
+
 module.exports = { addNewUser, getAllUsers };
 /*{
     "userName": "steel",
