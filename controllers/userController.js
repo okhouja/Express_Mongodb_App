@@ -1,10 +1,6 @@
 const UserData = require("../model/userModel");
-const userController = {};
 
-// Get one user
-userController.getOneUser = async (req, res) => {
-  res.status(200).json(res.user);
-};
+const userController = {};
 
 // View All Users
 userController.getAllUsers = async (req, res) => {
@@ -78,6 +74,11 @@ userController.updateAllUserData = async (req, res) => {
 };
 
 // Patch one User
+
+// Get one user
+userController.getOneUser = async (req, res) => {
+  res.status(200).json(res.user);
+};
 
 module.exports = userController;
 
