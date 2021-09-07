@@ -1,29 +1,13 @@
 const UserData = require("../model/userModel");
-const express = require("express");
-
-// Get one user by his userName
-const getUser = async (req, res, next) => {
-  let user;
-  try {
-    user = await UserData.findOne({ userName: req.params.userName });
-    console.log(user);
-    if (user == null) {
-      return res.status(404).json({ message: "Sorry, User not found." });
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-  res.user = user;
-  next();
-};
+const userController = {};
 
 // Get one user
-const getOneUser = async (req, res) => {
+userController.getOneUser = async (req, res) => {
   res.status(200).json(res.user);
 };
 
 // View All Users
-const getAllUsers = async (req, res) => {
+userController.getAllUsers = async (req, res) => {
   try {
     const users = await UserData.find();
     // console.log(users);
@@ -50,7 +34,7 @@ const getAllUsers = async (req, res) => {
 };
 
 // Add new user
-const addNewUser = async (req, res) => {
+userController.addNewUser = async (req, res) => {
   const user = new UserData({
     userName: req.body.userName,
     userPass: req.body.userPass,
@@ -71,9 +55,9 @@ const addNewUser = async (req, res) => {
 };
 
 // Update one User
-const updateAllUserData = async (req, res) => {
+userController.updateAllUserData = async (req, res) => {
   try {
-    await UsersData.updateOne(
+    await UserData.updateOne(
       { userName: req.params.userName },
       {
         $set: {
@@ -95,13 +79,7 @@ const updateAllUserData = async (req, res) => {
 
 // Patch one User
 
-module.exports = {
-  getUser,
-  getOneUser,
-  addNewUser,
-  getAllUsers,
-  updateAllUserData,
-};
+module.exports = userController;
 
 /*{
     "userName": "steel",
