@@ -1,22 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userControllers");
-const {
-  getUser,
-  getOneUser,
-  getAllUsers,
-  addNewUser,
-  updateAllUserData,
-} = require("../controllers/usersControllers");
+const userMdd = require("../middelware/");
 
-router.route("/").get(getAllUsers).post(addNewUser);
+router
+  .route("/")
+  .get(userController.getAllUsers)
+  .post(userController.addNewUser);
 
 // route with username Value
 router
   .route("/:userName")
-  .get(getUser, getOneUser)
-  .patch(getUser, getAllUsers)
-  .put(getUser, updateAllUserData)
-  .delete(getUser);
+  .get(userMdd.getUser, userController.getOneUser)
+  .patch(userMdd.getUser, userController.getAllUsers)
+  .put(userMdd.getUser, userController.updateAllUserData);
 
 module.exports = router;
