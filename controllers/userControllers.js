@@ -1,11 +1,11 @@
-const UsersData = require("../model/usersModel");
+const UserData = require("../model/userModel");
 const express = require("express");
 
 // Get one user by his userName
 const getUser = async (req, res, next) => {
   let user;
   try {
-    user = await UsersData.findOne({ userName: req.params.userName });
+    user = await UserData.findOne({ userName: req.params.userName });
     console.log(user);
     if (user == null) {
       return res.status(404).json({ message: "Sorry, User not found." });
@@ -25,7 +25,7 @@ const getOneUser = async (req, res) => {
 // View All Users
 const getAllUsers = async (req, res) => {
   try {
-    const users = await UsersData.find();
+    const users = await UserData.find();
     // console.log(users);
     res.status(200).json(
       users.map((user) => {
@@ -51,7 +51,7 @@ const getAllUsers = async (req, res) => {
 
 // Add new user
 const addNewUser = async (req, res) => {
-  const user = new UsersData({
+  const user = new UserData({
     userName: req.body.userName,
     userPass: req.body.userPass,
     age: req.body.age,
