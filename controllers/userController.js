@@ -43,14 +43,14 @@ userController.addNewUser = async (req, res) => {
     const newUser = await user.save();
     console.log(newUser);
     // 201 for successful Created
-    res.status(201).json(newUser);
+    res.status(201).json({ message: "New user being created successfully" });
   } catch (err) {
     // 400 for unauthorized or bad request
     res.status(400).json({ message: err.message });
   }
 };
 
-// Update one User
+// Update All User data
 userController.updateAllUserData = async (req, res) => {
   try {
     await UserData.updateOne(
@@ -75,8 +75,8 @@ userController.updateAllUserData = async (req, res) => {
 
 // Patch one User
 
-// Get one user
-userController.getOneUser = async (req, res) => {
+// Display one user
+userController.displayOneUser = async (req, res) => {
   res.status(200).json(res.user);
 };
 

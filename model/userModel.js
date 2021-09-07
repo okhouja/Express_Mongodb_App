@@ -36,7 +36,7 @@ const userDataSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("userDataCollection", userDataSchema);
+module.exports = mongoose.model("usersData", userDataSchema);
 /*{
     "userName": "steel",
     "userPass": "123pass",

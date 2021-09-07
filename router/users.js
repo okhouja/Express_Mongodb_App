@@ -11,7 +11,7 @@ router
 // route with username Value
 router
   .route("/:userName")
-  .get(userMdd.getUser, userController.getOneUser)
+  .get(userMdd.getUser, userController.displayOneUser)
   .patch(userMdd.getUser, userController.getAllUsers)
   .put(userMdd.getUser, userController.updateAllUserData);
 
