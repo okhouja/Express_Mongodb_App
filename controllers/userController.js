@@ -77,7 +77,7 @@ userController.updateAllUserData = async (req, res) => {
 // Patch one User
 
 // Display one user
-userController.displayOneUser = async (err, req, res, next) => {
+userController.displayOneUser = async (req, res) => {
   try {
     res.status(200).send(res.user);
   } catch (err) {

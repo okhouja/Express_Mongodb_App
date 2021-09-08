@@ -3,9 +3,10 @@ const userMdd = {};
 
 // Get one user by his userName
 userMdd.getUser = async (req, res, next) => {
-  const userByName = await UserModel.findOne({ userName: req.params.userName });
+  console.log(req.params);
+  const userByName = await UserModel.findOne({ userName: req.params.username });
   try {
-    console.log(userByName);
+    // console.log(userByName);
     if (!userByName) {
       return res.status(404).json({ message: "Sorry, User not found." });
     }
